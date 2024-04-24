@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <title>데이터베이스 흐름</title>
+
+	</head>
+
+<body>
+<h3><i>DB Flow</i><h3>
+
+
+	<table border=1>
+
+	<tr>
+	    <td>패키지 import 및 접속할 서버 주소</td>
+	    <td>DBMS의 사용자 이름과 패스워드 입력</td>
+	    <td>연결을 위한 변수 선언</td>
+                <td>쿼리를 실행하는 Statement 변수선언</td>
+                <td>결과를 테이블 형식으로 받아들일 ResultSet 변수 선언</td>
+                <td>try문을 통해 실행</td>
+                <td>모든 절차가 끝나면 닫는과정 실행.</td>
+
+	</tr>
+
+            <tr>
+	    <td>import java.sql.*; 실행 및<br> String url= "jdbc:postgresql://127.0.0.1:43432/testdb"; 선언</td>
+	    <td>String user = "scott";<br>
+	           String pwd = "tiger";</td>
+	    <td>Connection con =null;</td>
+                <td>Statement stmt = null;</td>
+                <td>ResultSet rs = null;</td>
+                <td>※설명 아래 별도</td>
+                <td>rs.close();<br>
+	           stmt.close();<br>
+		con.close();</td>
+
+	</tr>
+
+	<tr>
+		<td colspan=7><img src='jdbc.PNG' width='2000' height='300'></td>
+	</tr>
+
+
+
+	</table>
+ 
+<h3>try문</h3>
+
+
+<ul>
+
+<li>Class.forName("org.postgresql.Driver");     <strong>//postgresql JBDC를 읽어들인다.</strong></il>
+
+<li>con = DriverManager.getConnection(url,user,pwd) ;    <strong>//DBMS와 연결한다.</strong></il>
+
+<li>stmt = con.createStatement();     <strong>//DBMS에 쿼리할 준비를 한다.</strong></il>
+
+<li>String query = "select * from books";    <strong>//실행할 쿼리문</strong></il>
+
+<li>rs = stmt.executeQuery(query);        <strong>//쿼리를 실행한 결과를 rs로 받는다.<strong></il>
+
+DB 읽어오는 핵심 부분
+<il>while(rs.next())<br>
+			{<br>
+				System.out.println(rs.getString("id")+","+rs.getString("name"));<br>
+			}<br>
+                                           //next()메서드를 통해 한줄한줄 읽어가면서 다음 자료가 있을때까지 보여준다.</il><br>
+
+<il>catch(Exception ex)<br>
+			{<br>
+				System.out.println("err: "+ex.toString());<br>
+			}<br>
+               //try문 안에서 에러가 발생하면 예외처리 한다.</il>
+
+</ul>
+
+
+<br><br>
+<h2>최종코드</h2>
+	<tr>
+		<td><img src='code.PNG'></td>
+	</tr>
+
+
+
+
+
+
+
+
+	</body>
+
+
+
+</html>

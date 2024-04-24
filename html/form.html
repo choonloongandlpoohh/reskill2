@@ -1,13 +1,13 @@
 
 <form>
-이름:<input type='text' placeholder='이름'><br>
-주소:<input type='text' placeholder='주소'><br>
+이름:<input type='text' placeholder='이름' required><br>
+주소:<input type='text' placeholder='주소' required><br>
 생년월일:<input type='date'><br>
 
 
-    <input type='radio' name='license' value='지적기사'>지적기사
-    <input type='radio' name='license' value='지적산업기사'>지적산업기사
-    <input type='radio' name='license' value='지적기능사'>지적기능사
+    <input type='radio' name='license' value='지적기사' required>지적기사
+    <input type='radio' name='license' value='지적산업기사' required>지적산업기사
+    <input type='radio' name='license' value='지적기능사' required>지적기능사
 
 
 <h3>가산점<h3>
@@ -28,10 +28,11 @@
 	</select>
 <br>
 <h2>지원동기<h2><br>
-<input type='text' placeholder='500자이내로 쓰시오.' style="width:500px;height:200px;font-size:30px;"><br><br>
+<input type='text' placeholder='500자이내로 쓰시오.' style="width:500px;height:200px;font-size:30px;" required><br><br>
 <h2>성장배경<h2><br>
-<input type='text' placeholder='500자 이내로 쓰시오.' style="width:500px;height:200px;font-size:30px;"><br>
+<input type='text' placeholder='500자 이내로 쓰시오.' style="width:500px;height:200px;font-size:30px;" required><br>
 
+<button type='sumit'>제출</button>
 
 
 </form>
